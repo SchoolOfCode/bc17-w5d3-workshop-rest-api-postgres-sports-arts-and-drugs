@@ -32,7 +32,19 @@ export async function getBookById(id) {
 
 export async function createBook(book) {
   // Query the database to create a book and return the newly created book
+
+  const queryText = "INSERT INTO books (id, title, published_date, author_id) VALUES ($1, $2, $3, $4)";
+  // Define the SQL query to fetch the book with the specified id from the 'books' table
+
+// Use the pool object to send the query to the database
+const result = await pool.query(queryText, [id, title, published_date, author_id]);
 }
+/*{
+            "id": 1,
+            "title": "1984",
+            "published_date": "1949-06-07T23:00:00.000Z",
+            "author_id": 1
+        } */
 
 export async function updateBookById(id, updates) {
   // Query the database to update a book and return the newly updated book or null
